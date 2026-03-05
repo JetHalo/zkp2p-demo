@@ -1,6 +1,6 @@
 # zkp2p
 
-PRD-aligned scaffold for **插件聚合 + zkVerify + Horizen 链上 release**。
+PRD-aligned scaffold for **plugin aggregation + zkVerify + on-chain release on Horizen**.
 
 ## Locked decisions
 - submission mode: `aggregation-kurier`
@@ -23,3 +23,10 @@ cp contracts/.env.example contracts/.env
 
 npm run dev:web
 ```
+
+## Proof Plugin Installation
+1. Open `chrome://extensions` (or `edge://extensions`).
+2. Enable `Developer mode`.
+3. Click `Load unpacked`.
+4. Select `/Users/jethalo/projects/zkp2p/apps/proof-plugin`.
+5. Refresh the zkp2p web page after the extension is loaded.
