@@ -1586,7 +1586,7 @@ export default function Zkp2pHorizenReleasePage() {
 
         <div className="zk-account-row">
           <button className="zk-mini-pill" type="button">
-            Horizen EON
+            Horizen testnet
           </button>
           <button className="zk-account-pill" onClick={connectWallet} type="button">
             {walletAddress ? shortAddress(walletAddress) : "Connect Wallet"}
