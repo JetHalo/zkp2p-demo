@@ -1,0 +1,25 @@
+# Node / Next
+node_modules/
+.next/
+out/
+
+# Tooling
+.DS_Store
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# Build artifacts
+coverage/
+dist/
+artifacts/
+cache/
+
+# Local sqlite
+*.db
+*.db-shm
+*.db-wal
+
+# Local PRD drafts (keep local)
+docs/zkp2p-deposit-pool-prd.md

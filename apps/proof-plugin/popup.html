@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PeerAuth - Payment Verification</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="peer-shell">
+      <header class="topbar">
+        <button id="backBtn" class="icon-btn" type="button" aria-label="Back">&#8592;</button>
+        <h1 id="screenTitle">COMPLETE PAYMENT</h1>
+        <span class="spacer" aria-hidden="true"></span>
+      </header>
+
+      <section class="stepper" aria-label="Verification progress">
+        <div class="step active" data-step="payment">
+          <span class="dot">&#9992;</span>
+          <span class="label">Payment</span>
+        </div>
+        <div class="connector"></div>
+        <div class="step" data-step="authenticate">
+          <span class="dot">&#128273;</span>
+          <span class="label">Authenticate</span>
+        </div>
+        <div class="connector"></div>
+        <div class="step" data-step="verify">
+          <span class="dot">&#10003;</span>
+          <span class="label">Verify</span>
+        </div>
+      </section>
+
+      <section id="paymentPanel" class="panel active">
+        <div class="timer" id="expiryText">Order expiry unavailable</div>
+
+        <h2>Instructions:</h2>
+        <ul class="rules good">
+          <li>Use a personal Wise account (not Business)</li>
+          <li>Pay from your Wise balance before order expiry</li>
+          <li>Send exactly the requested amount in one payment</li>
+          <li>Ensure the seller receives the exact currency</li>
+        </ul>
+
+        <ul class="rules bad">
+          <li>Avoid cross-currency conversion</li>
+          <li>Wrong currency may cause a 5% penalty</li>
+          <li>Do not pay from a Wise Business account</li>
+        </ul>
+
+        <label class="ack-row">
+          <input id="ackInput" type="checkbox" />
+          <span>I understand not following the instructions can lead to permanent loss of funds.</span>
+        </label>
+
+        <button id="paymentCta" class="primary" type="button" disabled>PROVE IN WISE</button>
+      </section>
+
+      <section id="authPanel" class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Your Wise Payments</h2>
+            <p>Select a payment to verify</p>
+          </div>
+          <button id="refreshPayments" class="icon-btn" type="button" aria-label="Refresh">&#8635;</button>
+        </div>
+
+        <div id="paymentList" class="payment-list"></div>
+
+        <button id="selectPaymentCta" class="primary gradient" type="button" disabled>
+          SELECT PAYMENT
+        </button>
+      </section>
+
+      <section id="verifyPanel" class="panel">
+        <h2 class="verify-title">VERIFY PAYMENT</h2>
+
+        <div class="verify-flow">
+          <div class="row" id="flowPaymentRow">
+            <span class="icon">&#10132;</span>
+            <div class="text">
+              <strong id="selectedPaymentLabel">No payment selected</strong>
+              <small id="selectedPaymentSub">Capture payment details first</small>
+            </div>
+            <span class="status done" id="flowPaymentStatus">&#10003;</span>
+          </div>
+
+          <div class="row" id="flowVerifyRow">
+            <span class="icon">&#128274;</span>
+            <div class="text">
+              <strong id="verifyLine">Verifying Payment</strong>
+              <small id="verifyHint">Can take up to 30 seconds</small>
+            </div>
+            <span class="status loading" id="flowVerifyStatus">...</span>
+          </div>
+
+          <div class="row" id="flowDoneRow">
+            <span class="icon">&#10003;</span>
+            <div class="text">
+              <strong>Complete Onramp</strong>
+              <small id="receiveHint">Receive USDC on Horizen</small>
+            </div>
+            <span class="status" id="flowDoneStatus">&#9711;</span>
+          </div>
+        </div>
+
+        <a id="finalLink" class="final-link" href="#" target="_blank" rel="noreferrer"></a>
+
+        <button id="verifyCta" class="primary" type="button">VERIFY PAYMENT</button>
+      </section>
+
+      <footer class="footer">
+        <div class="session-line">Proof: <span id="proofValue">-</span></div>
+        <div id="statusLine" class="status-line">Waiting for active order from dApp...</div>
+        <pre id="preProofDump" class="debug-dump" aria-live="polite"></pre>
+      </footer>
+    </main>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

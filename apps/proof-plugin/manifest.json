@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "zkp2p Proof Plugin",
+  "version": "0.1.0",
+  "description": "Collect Wise evidence, run browser proving, and relay proof for zkp2p.",
+  "permissions": ["storage", "tabs", "scripting", "activeTab"],
+  "host_permissions": [
+    "https://wise.com/*",
+    "https://*.wise.com/*",
+    "http://localhost/*",
+    "https://localhost/*",
+    "http://127.0.0.1/*",
+    "https://127.0.0.1/*",
+    "https://*.railway.app/*",
+    "https://*.up.railway.app/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "zkp2p Proof Plugin",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://wise.com/*",
+        "https://*.wise.com/*",
+        "http://localhost/*",
+        "https://localhost/*",
+        "http://127.0.0.1/*",
+        "https://127.0.0.1/*",
+        "https://*.railway.app/*",
+        "https://*.up.railway.app/*"
+      ],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inpage-bridge.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

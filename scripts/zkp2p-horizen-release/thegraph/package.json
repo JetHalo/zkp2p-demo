@@ -1,0 +1,17 @@
+{
+  "name": "zkp2p-horizen-release-subgraph",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "prepare:manifest": "node ./scripts/prepare-manifest.mjs",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy:goldsky": "node ./scripts/deploy-goldsky.mjs"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.98.1"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-ts": "^0.38.2"
+  }
+}

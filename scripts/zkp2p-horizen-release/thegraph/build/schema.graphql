@@ -1,0 +1,29 @@
+type Commitment @entity(immutable: false) {
+  id: ID!
+  intentId: Bytes!
+  buyer: Bytes!
+  amount: BigInt!
+  txHash: Bytes!
+  blockNumber: BigInt!
+  createdAt: BigInt!
+}
+
+type DepositEvent @entity(immutable: true) {
+  id: ID!
+  seller: Bytes!
+  amount: BigInt!
+  txHash: Bytes!
+  blockNumber: BigInt!
+  createdAt: BigInt!
+}
+
+type ReleaseEvent @entity(immutable: true) {
+  id: ID!
+  intentId: Bytes!
+  buyer: Bytes!
+  amount: BigInt!
+  nullifierHash: Bytes!
+  txHash: Bytes!
+  blockNumber: BigInt!
+  createdAt: BigInt!
+}

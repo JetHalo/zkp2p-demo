@@ -1,0 +1,17 @@
+{
+  "name": "zkp2p",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/web",
+    "apps/proof-plugin",
+    "apps/tlsn-verifier"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace apps/web run dev",
+    "typecheck:web": "npm --workspace apps/web run typecheck",
+    "check:plugin": "npm --workspace apps/proof-plugin run check",
+    "dev:web:3001": "npm --workspace apps/web run dev -- --port 3001",
+    "dev:web:3011": "npm --workspace apps/web run dev -- --port 3011"
+  }
+}

@@ -1,0 +1,33 @@
+specVersion: 1.2.0
+indexerHints:
+  prune: auto
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Zkp2pDepositPool
+    network: horizen-testnet
+    source:
+      address: "0x2AF1B9f66B1Cb68E17b694aEA508068A988Af790"
+      abi: Zkp2pDepositPool
+      startBlock: 11124022
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - Commitment
+        - DepositEvent
+        - ReleaseEvent
+      abis:
+        - name: Zkp2pDepositPool
+          file: Zkp2pDepositPool/Zkp2pDepositPool.json
+      eventHandlers:
+        - event: Deposited(indexed address,uint256)
+          handler: handleDeposited
+        - event: IntentReserved(indexed bytes32,indexed address,indexed
+            address,uint256,uint256,bytes32,bytes32)
+          handler: handleIntentReserved
+        - event: Released(indexed bytes32,indexed address,uint256,bytes32)
+          handler: handleReleased
+      file: Zkp2pDepositPool/Zkp2pDepositPool.wasm

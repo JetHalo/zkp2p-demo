@@ -1,0 +1,34 @@
+{
+  "pluginName": "wise-plugin",
+  "targetDomains": [
+    "wise.com",
+    "*.wise.com"
+  ],
+  "capture": {
+    "recentTransfers": {
+      "maxItems": 5,
+      "fields": [
+        "transferId",
+        "amount",
+        "timestamp",
+        "payerRef",
+        "status",
+        "currency"
+      ]
+    }
+  },
+  "matchRules": {
+    "historyEndpoints": [
+      "/v1/transfers",
+      "/v3/profiles/*/transfers",
+      "/transfers"
+    ]
+  },
+  "selectionRules": {
+    "primaryKey": "transferId",
+    "fallbackKeys": [
+      "amount+timestamp",
+      "amount+payerRef"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "zkp2p-proof-plugin",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Browser extension for zkp2p proof capture/proving/relay flow",
+  "scripts": {
+    "check": "node -e \"console.log('proof-plugin static files ready')\"",
+    "test": "node --test test/**/*.test.mjs"
+  }
+}

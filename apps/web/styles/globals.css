@@ -1,0 +1,27 @@
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  background: #fafbfc;
+  color: #101828;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}

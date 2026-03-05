@@ -1,0 +1,7 @@
+[package]
+name = "zkp2p_horizen_release"
+type = "bin"
+authors = ["zkp2p"]
+compiler_version = ">=1.0.0"
+
+[dependencies]
